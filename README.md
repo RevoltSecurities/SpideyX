@@ -86,6 +86,10 @@ spideyx -h
 SpideyX Crawler Mode is more than just another web crawling tool. It provides advanced capabilities for both active and passive crawling of web applications. Whether you need to explore URLs recursively with a specified depth or perform comprehensive passive crawling using various external resources, SpideyX has you covered.
 
 ### SpideyX crawl Features:
+  <h1 align="center">
+        <img src="https://raw.githubusercontent.com/RevoltSecurities/SpideyX/refs/heads/main/images/Screenshot%20from%202024-09-19%2021-06-27.png" width="700px">
+        <br>
+      </h1>
 
   - Customizable crawl scope
   - Customization output filtering,matching,regex,hosts 
@@ -410,7 +414,10 @@ SpideyX also provides rate-limiting controls and the ability to handle multiple 
 ---
 
 ### SpideyX Paramfuzzer Mode Features:
-
+<h1 align="center">
+        <img src="https://raw.githubusercontent.com/RevoltSecurities/SpideyX/refs/heads/main/images/Screenshot%20from%202024-09-19%2021-10-54.png" width="700px">
+        <br>
+      </h1>
 - Customizable headers & cookies for authenticated parameter fuzzing
 - Body data fuzzing with dynamic parameter insertion
 - Supports raw HTTP request fuzzing
@@ -619,6 +626,10 @@ The `--http-raw` flag allows you to pass a complete raw HTTP request for paramet
 SpideyX Jsscrapy mode is designed for in-depth analysis and scraping of JavaScript files to uncover hidden endpoints and secrets. It parses JavaScript files from specified URLs or lists, utilizing user-defined regex patterns to search for and extract valuable information. This mode is particularly useful for discovering hidden functionalities and assets within web applications by analyzing their JavaScript code.
 
 ### SpideyX Jsscrapy Mode: Features
+<h1 align="center">
+        <img src="https://raw.githubusercontent.com/RevoltSecurities/SpideyX/refs/heads/main/images/Screenshot%20from%202024-09-19%2021-13-45.png" width="700px">
+        <br>
+      </h1>
 
 - **JavaScript File Parsing:** Efficiently parses and scrapes JavaScript files to uncover hidden endpoints and secrets.
   
