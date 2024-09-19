@@ -548,8 +548,6 @@ spideyx paramfuzzer -site https://example.com -w params.txt --verbose
 spideyx paramfuzzer -site https://example.com -w params.txt --silent
 ```
 
-Certainly! Here’s the updated documentation for the `--http-raw` feature in SpideyX Paramfuzzer Mode, including support for XML and HTML form bodies:
-
 ---
 
 ### SpideyX Paramfuzzer Mode: Raw HTTP Request Fuzzing
@@ -600,9 +598,6 @@ The `--http-raw` flag allows you to pass a complete raw HTTP request for paramet
 - Ensure the placeholder `$pideyx` is correctly placed in the body where you want parameters to be injected.
 - The `--http-raw` flag takes precedence over other body-related flags such as `-body` and `-fmt`. If you use `--http-raw`, these flags will be ignored.
 - The request body should be formatted correctly for JSON, XML, or HTML form submissions to ensure proper fuzzing and accurate results.
-
----
-
 
 ---
 
