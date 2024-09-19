@@ -83,14 +83,7 @@ spideyx -h
 
 #### SpideyX Crawler Mode:
 
-Spideyx crawler mode not another crawling tool that exists!, The Spidey crawler mode used to crawl urls from a site recursively with given maxiumum dept, that digs more urls and find more endpoints in
-active crawling, Spideyx also allows you to do authenticated active crawling using customized Headers in Request that include those headers when doing active crawling!, SpideyX also can do passive
-crawling! using resources like **webarchive**, **alienvault**, **commoncrawl** and passive mode is fully focused on results and it not fully concurrent like active crawling, but it have better passive
-crwaling than anyother!, So is this all?, No!.
-
-  SpideyX have multiple matchers and filters to gave you a desired outputs you need, like filtering and matching using extensions, regex, hosts. You can define your
-own scope to crawl and out of scope to spideyX. Hey you may sometimes need that you want to crawl from particular html tags and attributes right!, SpideyX also allows you to define your own html tags with attributes
-that never done by anyother existing crawler tools.
+SpideyX Crawler Mode is more than just another web crawling tool. It provides advanced capabilities for both active and passive crawling of web applications. Whether you need to explore URLs recursively with a specified depth or perform comprehensive passive crawling using various external resources, SpideyX has you covered.
 
 ### SpideyX crawl Features:
 
@@ -138,6 +131,7 @@ spideyx crawl -h
 
                 [configurations]:
 
+                  -tgs, --tags-attrs      : spideyx crawling tags can be configured using this flags you can control spideyx crawling  (ex: -tgs 'a:href,link:src,src:script')
                   -dept, --dept           : dept value to crawl for urls by spideyx (info: only in active crawling) (default: 1)
                   -X,  --method           : request method for crawling (default: get) (choices: "get", "post", "head", "put", "delete", "patch", "trace", "connect", "options")
                   -H,  --headers          : custom headers & cookies to send in http request for authenticated or custom header crawling
@@ -154,8 +148,8 @@ spideyx crawl -h
 
                   -hic, --host-include    : specify hosts to include urls of it and show in results with comma seperated values  (ex: -hc api.google.com,admin.google.com)
                   -hex, --host-exclude    : speify  hosts to exclude urls of it and show in results with comma seperated values   (ex: -hex class.google.com,nothing.google.com)
-                  -cs,  --crawl-scope     : specify the inscope url to be crawled by spideyx
-                  -cos, --crawl-out-scope : specify the outscope url to be not crawled by spideyxo
+                  -cs,  --crawl-scope     : specify the inscope url to be crawled by spideyx (ex: -cs /api/products or -cs inscope.txt)
+                  -cos, --crawl-out-scope : specify the outscope url to be not crawled by spideyx (ex: -cos /api/products or -cos outscope.txt)
 
                 [filters]:
 
@@ -247,6 +241,20 @@ Spideyx can also exclude the hosts to not include in crawling scope and you can 
 ```sh
 spideyx crawler -site https://hackerone.com -hex www.hackerone.com,hackerone.com
 ```
+--- 
+
+**Tag and Attribute Configuration:**
+
+  `-tgs`, `--tags-attrs`
+  Configure which HTML tags and attributes SpideyX should crawl. This flag allows you to control the crawling behavior by specifying tags and attributes of interest.
+  Example: -tgs 'a:href,link:src,src:script'
+Description: This option tells SpideyX to look for and extract URLs from href attributes in <a> tags, src attributes in <link> tags, and src attributes in <script> tags. Custom configurations help focus the crawling on specific parts of web pages, enhancing the relevance of the data collected.
+
+```sh
+spideyx crawler -site https://hackerone.com -tgs 'a:href,link:src'
+```
+
+---
 
 **Regex Filtering & Matching:**
 
@@ -385,6 +393,11 @@ Example:
 ```sh
 spideyx crawler -site https://example.com --verbose
 ```
+--- 
+
+
+#### **Defining your own html tags and attributes:**
+
 
 ---
 
@@ -767,7 +780,7 @@ spideyx jsscrapy --site https://example.com/add/hello.js --silent
 ---
 
 
-### Security
+### About
 
 SpideyX is a robust and secure tool designed with the highest standards of safety in mind. It is crafted to ensure that it does not pose any threats to users or security researchers. SpideyX operates transparently, respecting user permissions and will not update itself without explicit consent. We encourage the community to contribute to SpideyX by reporting issues and suggesting improvements. Your feedback is invaluable in helping us maintain and enhance the tool’s security and functionality.
 
