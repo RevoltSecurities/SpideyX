@@ -85,7 +85,7 @@ spideyx -h
 
 SpideyX Crawler Mode is more than just another web crawling tool. It provides advanced capabilities for both active and passive crawling of web applications. Whether you need to explore URLs recursively with a specified depth or perform comprehensive passive crawling using various external resources, SpideyX has you covered.
 
-### SpideyX crawl Features:
+### SpideyX `crawler` Features:
   <h1 align="center">
         <img src="https://raw.githubusercontent.com/RevoltSecurities/SpideyX/refs/heads/main/images/Screenshot%20from%202024-09-19%2021-06-27.png" width="700px">
         <br>
@@ -102,9 +102,9 @@ SpideyX Crawler Mode is more than just another web crawling tool. It provides ad
   - Output: file, stdout
   - Random useragent for each crawling request
 
-#### SpideyX crawl mode usages:
+#### SpideyX `crawler` mode usages:
 ```bash
-spideyx crawl -h
+spideyx crawler -h
 ```
 
 ```yaml
@@ -182,21 +182,21 @@ spideyx crawl -h
 ```
 ---
 
-#### SpideyX crawl mode configurations:
+#### SpideyX `crawler` mode configurations:
 
 **File Input:**
   ```sh
-spideyx crawl -sites urls.txt
+spideyx crawler -sites urls.txt
 ```
 
 **Url Input:**
 ```sh
-spideyx crawl -site https://hackerone.com
+spideyx crawler -site https://hackerone.com
 ```
 
 **Stdin Input:**
 ```sh
-cat urls.txt | spideyx crawl -dept 5
+cat urls.txt | spideyx crawler -dept 5
 ```
 ```sh
 subdominator -d hackerone.com | subprober -nc | spideyx crawler
@@ -280,7 +280,7 @@ spideyx crawler -site https://hackerone.com -fr 'https://developer.hackerone.com
 
 ---
 
-#### Spideyx crawl mode scope controls:
+#### Spideyx `crawler` mode scope controls:
 
 Defining you own scope when crawling help you to crawl only desired endpoint to crawl with maximum dept
 and this helps your crawling to be more accurate with desired endpoints you need.
