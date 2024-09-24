@@ -29,7 +29,8 @@ setup(
         'rich>=13.8.1',
         'tldextract>=5.1.2',
         'urllib3>=1.26.18',
-        'yarl>=1.9.4'
+        'yarl>=1.9.4',
+        'lxml=>5.3.0'
     ],
     entry_points={
         'console_scripts': [
