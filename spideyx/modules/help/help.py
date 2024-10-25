@@ -58,7 +58,7 @@ def crawler_help():
                 [{bold}{blue}input{reset}{bold}{white}]: 
                     
                   -site,  --site          : target url for spideyX to crawl
-                  -sties, --sites         : target urls for spideyX to crawl
+                  -sites, --sites         : target urls for spideyX to crawl
                   stdin/stdout            : target urls for spideyX using stdin
                 
                 [{bold}{blue}configurations{reset}{bold}{white}]:
