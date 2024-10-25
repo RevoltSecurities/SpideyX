@@ -58,7 +58,7 @@ def crawler_help():
                 [{bold}{blue}input{reset}{bold}{white}]: 
                     
                   -site,  --site          : target url for spideyX to crawl
-                  -sties, --sites         : target urls for spideyX to crawl
+                  -sites, --sites         : target urls for spideyX to crawl
                   stdin/stdout            : target urls for spideyX using stdin
                 
                 [{bold}{blue}configurations{reset}{bold}{white}]:
@@ -121,7 +121,7 @@ def jsscrapy_help():
                 [{bold}{blue}input{reset}{bold}{white}]: 
                     
                   -site,  --site          : target url for spideyX to jscrawl
-                  -sties, --sites         : target urls for spideyX to jscrawl
+                  -sites, --sites         : target urls for spideyX to jscrawl
                   stdin/stdout            : target urls for spideyX using stdin
                    
                 [{bold}{blue}configurations{reset}{bold}{white}]:
@@ -158,7 +158,7 @@ def paramfuzzer_help():
                 [{bold}{blue}input{reset}{bold}{white}]: 
                     
                   -site,  --site          : target url for spideyX to paramfuzzer
-                  -sties, --sites         : target urls for spideyX to paramfuzzer
+                  -sites, --sites         : target urls for spideyX to paramfuzzer
                   -w,     --wordlist      : wordlist file that contains parameters for fuzzing
                   stdin/stdout            : target urls for spideyX using stdin
                    
