@@ -158,7 +158,7 @@ def paramfuzzer_help():
                 [{bold}{blue}input{reset}{bold}{white}]: 
                     
                   -site,  --site          : target url for spideyX to paramfuzzer
-                  -sties, --sites         : target urls for spideyX to paramfuzzer
+                  -sites, --sites         : target urls for spideyX to paramfuzzer
                   -w,     --wordlist      : wordlist file that contains parameters for fuzzing
                   stdin/stdout            : target urls for spideyX using stdin
                    
