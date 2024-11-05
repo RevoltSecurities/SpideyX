@@ -32,3 +32,31 @@ def Version():
         quit()
     except Exception as e:
         pass
+
+def get_version_info():
+    url = f"https://api.github.com/repos/Revoltsecurities/SpideyX/releases/latest"
+    try:
+        response = requests.get(url, verify=True, timeout=10)
+        if response.status_code == 200:
+            data = response.json()
+            version_info = {
+                "tag_name": data.get('tag_name'),
+                "name": data.get('name'),
+                "body": data.get('body'),
+                "published_at": data.get('published_at')
+            }
+            return version_info
+    except KeyboardInterrupt as e:
+        quit()
+    except Exception as e:
+        pass
+
+def print_version_info():
+    version_info = get_version_info()
+    if version_info:
+        print(f"Version: {version_info['tag_name']}")
+        print(f"Name: {version_info['name']}")
+        print(f"Description: {version_info['body']}")
+        print(f"Published at: {version_info['published_at']}")
+    else:
+        print("Unable to fetch version information.")

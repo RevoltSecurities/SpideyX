@@ -133,3 +133,15 @@ def custompath(config_path):
             print(f"[{bold}{red}WRN{reset}]: {bold}{white}please check the the config path exists{reset}")
     except KeyboardInterrupt as e:
         quit()
+
+def update_config(new_config):
+    try:
+        config_path = config()
+        with open(config_path, "r") as file:
+            current_config = yaml.safe_load(file)
+        current_config.update(new_config)
+        with open(config_path, "w") as file:
+            yaml.dump(current_config, file, default_flow_style=False)
+        print(f"[{bold}{green}INFO{reset}]: {bold}{white}Configuration updated successfully!{reset}")
+    except Exception as e:
+        print(f"[{bold}{red}WRN{reset}]: {bold}{white}Exception occured while updating config: {e}{reset}", file=sys.stderr)

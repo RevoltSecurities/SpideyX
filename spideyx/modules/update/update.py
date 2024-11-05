@@ -61,3 +61,37 @@ def updatelog():
     except Exception as e:
         print(f"[{bold}{red}ALERT{reset}]: {bold}{white}Hey  unable to fetch update logs so please visit here --> https://github.com/RevoltSecurities/SpideyX{reset}")
         quit()
+
+def check_for_updates():
+    try:
+        url = "https://api.github.com/repos/RevoltSecurities/SpideyX/releases/latest"
+        response = requests.get(url, timeout=10)
+        if response.status_code == 200:
+            latest_version = response.json()['tag_name']
+            return latest_version
+        else:
+            print(f"[{bold}{red}WRN{reset}]: {bold}{white}Unable to check for updates. Please try again later.{reset}")
+            return None
+    except Exception as e:
+        print(f"[{bold}{red}WRN{reset}]: {bold}{white}Exception occurred while checking for updates: {e}{reset}")
+        return None
+
+def notify_user_of_update(current_version, latest_version):
+    if current_version != latest_version:
+        print(f"[{bold}{blue}INFO{reset}]: {bold}{white}A new version of SpideyX is available! Current version: {current_version}, Latest version: {latest_version}{reset}")
+        print(f"[{bold}{blue}INFO{reset}]: {bold}{white}Please update SpideyX to the latest version for new features and improvements.{reset}")
+    else:
+        print(f"[{bold}{blue}INFO{reset}]: {bold}{white}You are using the latest version of SpideyX.{reset}")
+
+def auto_update():
+    current_version = "v1.0.0"
+    latest_version = check_for_updates()
+    if latest_version:
+        notify_user_of_update(current_version, latest_version)
+        if current_version != latest_version:
+            url = zip_url("User")
+            if url:
+                latest_update(url, "User", "/tmp")
+                print(f"[{bold}{blue}INFO{reset}]: {bold}{white}SpideyX has been updated to the latest version!{reset}")
+            else:
+                print(f"[{bold}{red}WRN{reset}]: {bold}{white}Failed to get the update URL. Please update manually.{reset}")

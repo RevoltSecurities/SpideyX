@@ -19,7 +19,7 @@ random_color = random.choice(colors)
 
 def banner():
     tool_name = "spideyX"
-    fonts = ["big", "ogre", "shadow",  "graffiti", "slant"]
+    fonts = ["big", "ogre", "shadow",  "graffiti", "slant", "block", "doom", "isometric1"]
     selected_font = random.choice(fonts)
     banner = text2art(f"{tool_name}", font=selected_font)
     banner = f"""{bold}{random_color}{banner}{reset}

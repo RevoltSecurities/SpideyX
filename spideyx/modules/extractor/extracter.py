@@ -95,3 +95,23 @@ class Extractor:
             exit()
         except Exception as e:
             print(f"[{bold}{blue}INFO{reset}]: {bold}{white}Unknow Exception occured in Extractor yaml reader due to: {e}, {type(e)}{reset}")
+
+    @staticmethod
+    async def save_to_file(data: str, filename: str):
+        try:
+            async with aiofiles.open(filename, "a") as streamw:
+                await streamw.write(data + '\n')
+        except Exception as e:
+            print(f"[{bold}{blue}INFO{reset}]: {bold}{white}Unknown Exception occurred in Extractor save_to_file due to: {e}, {type(e)}{reset}")
+
+    @staticmethod
+    async def read_from_file(filename: str) -> str:
+        try:
+            async with aiofiles.open(filename, "r") as streamr:
+                data = await streamr.read()
+            return data
+        except FileNotFoundError:
+            print(f"[{bold}{red}WRN{reset}]: {bold}{white}{filename} no such file or directory exists{reset}")
+            exit()
+        except Exception as e:
+            print(f"[{bold}{blue}INFO{reset}]: {bold}{white}Unknown Exception occurred in Extractor read_from_file due to: {e}, {type(e)}{reset}")

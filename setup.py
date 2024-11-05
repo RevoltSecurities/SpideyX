@@ -5,7 +5,7 @@ with open("README.md", "r") as streamr:
 
 setup(
     name='spideyx',
-    version='1.0.0',
+    version='1.1.0',
     author='D. Sanjai Kumar',
     author_email='bughunterz0047@gmail.com',
     long_description=long_description,
@@ -30,7 +30,9 @@ setup(
         'tldextract>=5.1.2',
         'urllib3>=1.26.18',
         'yarl>=1.9.4',
-        'lxml>=5.3.0'
+        'lxml>=5.3.0',
+        'requests>=2.25.1',
+        'importlib-metadata>=4.0.0'
     ],
     entry_points={
         'console_scripts': [

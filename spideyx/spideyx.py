@@ -344,6 +344,138 @@ async def update(show_update, latest, help):
     if sys.stdin.isatty():
         print(f"[{bold}{red}WRN{reset}]: {bold}{white}stdin reader in not available in  spideyX 🕸️ update mode!{reset}")
         exit()
+
+@cli.command()
+@click.option("-h", "--help", is_flag=True)
+@click.option("-site", "--site", type=str)
+@click.option("-sites", "--sites", type=str)
+@click.option("-cp", "--config-path", type=str)
+@click.option("-c", "--concurrency", type=int, default=30)
+@click.option("-vr", "--verbose", is_flag=True)
+@click.option("-o", "--output", type=str)
+@click.option("-H", "--header", type=(str,str), multiple=True)
+@click.option("-dr", "--disable-redirect", is_flag=True, default=True)
+@click.option("-px", "--proxy", type=str, default=None)
+@click.option("-s", "--silent", is_flag=True)
+@click.option("-to", "--timeout", type=int, default=15)
+async def jsscrapy_v2(help, site, sites, config_path, concurrency, verbose, output, header, disable_redirect, proxy, silent, timeout):
+    if not silent:
+        click.echo(f"{random_color}{banner}{reset}")
+    if help:
+        jsscrapy_help()
+        exit()
+    if not silent:
+        gitversion()
+    yaml_path = config_path if config_path else configpath
+    yaml_content = await Extractor.Yamlreader(yaml_path)
+    print(f"[{bold}{blue}INFO{reset}]: {bold}{white}Loading config file from {yaml_path}{reset}", file=sys.stderr)
+    urls = [] 
+    if site:
+        urls.append(site)
+        jsSpidey = JsScrapy(yaml_content, urls, concurrency, proxy, disable_redirect, verbose, timeout, output,header)
+        await jsSpidey.start()
+        exit()
+        
+    if sites:
+        loaded = await Extractor.Reader(sites)
+        if loaded:  
+            for url in loaded:
+                urls.append(url)
+            jsSpidey = JsScrapy(yaml_content, urls, concurrency, proxy, disable_redirect, verbose, timeout, output,header)
+            await jsSpidey.start()
+            exit()
+            
+    if sys.stdin.isatty():
+        print(f"[{bold}{red}WRN{reset}]: {bold}{white}no input provided for spideyX 🕸️{reset}")
+        exit()    
+    for url in sys.stdin:
+        url = url.strip()
+        urls.append(url)
+    jsSpidey = JsScrapy(yaml_content, urls, concurrency, proxy, disable_redirect, verbose, timeout, output,header)
+    await jsSpidey.start()
+    exit()
+
+@cli.command()
+@click.option("-h", "--help", is_flag=True)
+@click.option("-site", "--site", type=str)
+@click.option("-sites", "--sites", type=str)
+@click.option("-w", "--wordlist", type=str)
+@click.option("-H", "--header", type=(str, str), multiple=True)
+@click.option("-X", "--method", type=click.Choice(choices=["get", "post", "head", "put", "delete", "patch", "trace", "connect", "options"], case_sensitive=False),default="get")
+@click.option("-body", "--body", type=str)
+@click.option("-fmt", "--format", type=click.Choice(choices=["html", "json", "xml"], case_sensitive=False))
+@click.option("-to", "--timeout", type=int, default=15)
+@click.option("-px", "--proxy", type=str)
+@click.option("-ch", "--chunks", type=int, default=100)
+@click.option("-c", "--concurrency", type=int, default=5)
+@click.option("-dr", "--disable-redirect", is_flag=True, default=False)
+@click.option("-s", "--silent", is_flag=True, default=False)
+@click.option("-vr", "--verbose", is_flag=True, default=False)
+@click.option("-o", "--output", type=str)
+@click.option("--http-raw", type=str)
+@click.option("-delay", "--delay", type=float, default=0.000001)
+@click.option("-ra", "--random-agent", is_flag=True, default=False)
+async def paramfuzzer_v2(help, site, sites, wordlist, header, method, body, format, timeout, proxy, chunks, concurrency,disable_redirect, silent, verbose, output, http_raw, delay, random_agent):
+    if not silent:
+        click.echo(f"{random_color}{banner}{reset}")
+    if help:
+        paramfuzzer_help()
+        quit()
+    if not silent:
+        gitversion()
+    if site:
+        if not wordlist:
+            print(f"[{bold}{red}WRN{reset}]: {bold}{white}Please provide a wordlist for spideyX 🕸️{reset}")
+        wordlists = await Extractor.Reader(wordlist)
+        if wordlists:
+            spideyfuzzer = AsyncSpideyFuzzer(site, wordlists,concurrency, chunks, header, method, proxy, disable_redirect, body, format, http_raw, verbose, timeout, delay, random_agent, output)
+            await spideyfuzzer.start()
+        exit()
+        
+    if http_raw:
+        if not wordlist:
+            print(f"[{bold}{red}WRN{reset}]: {bold}{white}Please provide a wordlist for spideyX 🕸️{reset}")
+        wordlists = await Extractor.Reader(wordlist)
+        method, site, header, body = await AsyncSpideyFuzzer.raw_http_reader(http_raw)
+        contents = header.get("Content-Type")
+        if contents and contents == "application/json":
+            format = "json"
+        elif contents and contents == "application/xml":
+            format = "xml"
+        else:
+            format = "html"
+        if wordlists:
+            spideyfuzzer = AsyncSpideyFuzzer(site, wordlists,concurrency, chunks, header, method, proxy, disable_redirect, body, format, http_raw, verbose, timeout, delay, random_agent, output)
+            await spideyfuzzer.start()
+        exit()
+    
+    if sites:
+        urls = await Extractor.Reader(sites)
+        if not wordlist:
+            print(f"[{bold}{red}WRN{reset}]: {bold}{white}Please provide a wordlist for spideyX 🕸️{reset}")
+        wordlists = await Extractor.Reader(wordlist)
+        if not wordlists:
+            exit()
+        if urls:  
+            for site in urls:
+                spideyfuzzer = AsyncSpideyFuzzer(site, wordlists,concurrency, chunks, header, method, proxy, disable_redirect, body, format, http_raw, verbose, timeout, delay, random_agent, output)
+                await spideyfuzzer.start()
+            exit()
+    
+    if sys.stdin.isatty():
+        print(f"[{bold}{red}WRN{reset}]: {bold}{white}no input provided for spideyX 🕸️{reset}")
+        exit()
+    else:
+        if not wordlist:
+            print(f"[{bold}{red}WRN{reset}]: {bold}{white}Please provide a wordlist for spideyX 🕸️{reset}")
+            exit()
+        wordlists = await Extractor.Reader(wordlist) 
+        if wordlists:
+            for site in sys.stdin:
+                site = site.strip()
+                spideyfuzzer = AsyncSpideyFuzzer(site, wordlists,concurrency, chunks, header, method, proxy, disable_redirect, body, format, http_raw, verbose, timeout, delay, random_agent, output)
+                await spideyfuzzer.start()
+            exit()
     
 if __name__ == "__main__":
     cli()
