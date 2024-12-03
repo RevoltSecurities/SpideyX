@@ -6,7 +6,7 @@
 </h1>
 
 SpideyX -  A Web Reconnaissance Penetration Testing tool for Penetration Testers and Ethical Hackers that included with multiple
-mode with asynchronous concurrne performance. Spideyx is a tool that have 3 seperate modes and each mode are used for different 
+mode with asynchronous concurrent performance. Spideyx is a tool that have 3 seperate modes and each mode are used for different 
 approach and different methods, Spideyx is one tool but it equal to 3 tools because it have ability to crawling, Jsscraping, parameter fuzzing.
 
 ---
@@ -29,7 +29,7 @@ git clone https://github.com/RevoltSecurities/SpideyX
 cd Spideyx
 pip install .
 ```
-these are methods that install spideyx succesfully into your machiene and ready to execute, but how to use the spideyx
+these are methods that install spideyx successfully into your machine and ready to execute, but how to use the spideyx
 
 ---
 
@@ -82,7 +82,7 @@ spideyx -h
 
 ### SpideyX Modes:
 
- SpideyX have 3 different mode that used for 3 different purposes and thse are the modes of SpideX:
+ SpideyX have 3 different mode that used for 3 different purposes and these are the modes of SpideX:
    - crawler
    - jsscrapy
    - paramfuzzer
@@ -157,7 +157,7 @@ spideyx crawler -h
                 [scope]:
 
                   -hic, --host-include    : specify hosts to include urls of it and show in results with comma seperated values  (ex: -hc api.google.com,admin.google.com)
-                  -hex, --host-exclude    : speify  hosts to exclude urls of it and show in results with comma seperated values   (ex: -hex class.google.com,nothing.google.com)
+                  -hex, --host-exclude    : specify  hosts to exclude urls of it and show in results with comma seperated values   (ex: -hex class.google.com,nothing.google.com)
                   -cs,  --crawl-scope     : specify the inscope url to be crawled by spideyx (ex: -cs /api/products or -cs inscope.txt)
                   -cos, --crawl-out-scope : specify the outscope url to be not crawled by spideyx (ex: -cos /api/products or -cos outscope.txt)
 
@@ -231,7 +231,7 @@ spideyx crawler -site https://hackerone.com -em .js,.jsp,.asp,.apsx,.php
 ```
 --- 
 
-and you can filter extension using falgs: `-ef`, `--extension-filters` or spideyx have predefined blacklist of extensions not to crawl or include in output.
+and you can filter extension using flags: `-ef`, `--extension-filters` or spideyx have predefined blacklist of extensions not to crawl or include in output.
 
 ```sh
 spideyx crawler -site https://hackerone.com -ef .css,.woff,.woff2,.mp3,.mp4,.pdf
@@ -297,7 +297,7 @@ Controlling your scope with SpideyX is very easy using: `-cs` & `--crawl-scope`
 ```sh
 spideyx crawler -site https://random.hackerone.com -cs /wp-admin
 ```
-and for multiple inscope deinition you can pass the file `scope.txt`
+and for multiple inscope definition you can pass the file `scope.txt`
 ```sh
 cat scope.txt
 /admin/api/v1
@@ -321,7 +321,7 @@ spideyx crawler -site https://random.hackerone.com -cos outscope.txt
 
 #### Spideyx crawl mode concurrency:
 
-Spidex concurrency can be controlled to instruct spidey how much concurrent, delay and paralellism to used
+Spidex concurrency can be controlled to instruct spidey how much concurrent, delay and parallelism to used
 when crawling and this can be done easily in spideyx crawl mode!
 
 ---

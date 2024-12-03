@@ -79,7 +79,7 @@ def crawler_help():
                 [{bold}{blue}scope{reset}{bold}{white}]: 
                     
                   -hic, --host-include    : specify hosts to include urls of it and show in results with comma seperated values  (ex: -hc api.google.com,admin.google.com)
-                  -hex, --host-exclude    : speify  hosts to exclude urls of it and show in results with comma seperated values   (ex: -hex class.google.com,nothing.google.com)
+                  -hex, --host-exclude    : specify  hosts to exclude urls of it and show in results with comma seperated values   (ex: -hex class.google.com,nothing.google.com)
                   -cs,  --crawl-scope     : specify the inscope url to be crawled by spideyx (ex: -cs /api/products or -cs inscope.txt)
                   -cos, --crawl-out-scope : specify the outscope url to be not crawled by spideyx (ex: -cos /api/products or -cos outscope.txt)
                 
